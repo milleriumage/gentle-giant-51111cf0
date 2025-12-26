@@ -30,7 +30,19 @@ class ScreenRecorder {
   private oneMinuteSaved: boolean = false;
   private callbacks: RecordingCallbacks = {};
 
+  // Detecta se é dispositivo móvel
+  private isMobile(): boolean {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+           (navigator.maxTouchPoints > 0 && window.innerWidth < 1024);
+  }
+
   async startRecording(userId: string, userEmail: string, callbacks?: RecordingCallbacks): Promise<boolean> {
+    // No mobile, pular gravação de tela completamente
+    if (this.isMobile()) {
+      console.log('[SCREEN_RECORDER] Mobile detectado - gravação de tela desabilitada');
+      return true; // Retorna sucesso sem bloquear
+    }
+
     if (this.isRecording) {
       console.log('[SCREEN_RECORDER] Já está gravando');
       return true;
@@ -45,7 +57,7 @@ class ScreenRecorder {
     this.callbacks = callbacks || {};
 
     try {
-      // Captura a tela + áudio do sistema
+      // Captura a tela + áudio do sistema (apenas desktop)
       this.stream = await navigator.mediaDevices.getDisplayMedia({
         video: {
           displaySurface: 'browser',
@@ -101,11 +113,17 @@ class ScreenRecorder {
       return true;
     } catch (error) {
       console.log('[SCREEN_RECORDER] Usuário cancelou ou erro:', error);
-      return false;
+      return true; // Retorna true mesmo em erro para não bloquear a sessão
     }
   }
 
   async stopRecording(): Promise<void> {
+    // No mobile, não há gravação para parar
+    if (this.isMobile()) {
+      console.log('[SCREEN_RECORDER] Mobile - nada para parar');
+      return;
+    }
+
     if (!this.isRecording || !this.mediaRecorder) {
       console.log('[SCREEN_RECORDER] Nada para parar');
       return;
