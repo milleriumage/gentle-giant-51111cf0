@@ -18,8 +18,6 @@ const voices = [
 
 const languages = [
   { id: 'pt-BR', label: 'PT', flag: 'BR' },
-  { id: 'en-US', label: 'EN', flag: 'US' },
-  { id: 'es-ES', label: 'ES', flag: 'ES' },
 ];
 
 export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) => {
@@ -44,14 +42,14 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
   };
 
   return (
-    <div className="flex-1 bg-gradient-to-b from-pink-50 via-pink-100/80 to-pink-200/60 p-4 sm:p-6 overflow-y-auto pb-24">
-      <h1 className="text-2xl sm:text-3xl font-bold text-pink-500 mb-4 sm:mb-6">
+    <div className="flex-1 bg-gradient-to-b from-orange-50 via-rose-50 to-red-100/60 p-4 sm:p-6 overflow-y-auto pb-24">
+      <h1 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500 mb-4 sm:mb-6">
         Configuração
       </h1>
 
       {/* Duration Slider */}
       <div className="mb-4">
-        <label className="text-pink-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
+        <label className="text-rose-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
           Duração (minutos)
         </label>
         <div className="flex items-center gap-3">
@@ -61,9 +59,9 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
             max="10"
             value={duration}
             onChange={(e) => setDuration(Number(e.target.value))}
-            className="flex-1 h-1.5 bg-pink-200 rounded-full appearance-none cursor-pointer accent-pink-500"
+            className="flex-1 h-1.5 bg-orange-200 rounded-full appearance-none cursor-pointer accent-rose-500"
           />
-          <span className="text-pink-500 text-sm font-bold min-w-[40px] text-right">
+          <span className="text-rose-500 text-sm font-bold min-w-[40px] text-right">
             {duration} min
           </span>
         </div>
@@ -71,7 +69,7 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
 
       {/* Theme Input */}
       <div className="mb-4">
-        <label className="text-pink-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
+        <label className="text-rose-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
           Motivo do Barraco
         </label>
         <input
@@ -79,7 +77,7 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
           value={theme}
           onChange={(e) => setTheme(e.target.value)}
           placeholder="Ex: Ele esqueceu nosso aniversário..."
-          className="w-full p-3 rounded-xl bg-white/90 border border-pink-200 text-pink-600 placeholder-pink-300 focus:outline-none focus:border-pink-400 text-sm"
+          className="w-full p-3 rounded-xl bg-white/90 border border-orange-200 text-rose-600 placeholder-rose-300 focus:outline-none focus:border-rose-400 text-sm"
         />
       </div>
 
@@ -87,7 +85,7 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
       <div className="grid grid-cols-2 gap-3 mb-4">
         {/* Voice Selection */}
         <div>
-          <label className="text-pink-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
+          <label className="text-rose-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
             Voz
           </label>
           <div className="flex gap-2">
@@ -97,8 +95,8 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
                 onClick={() => setSelectedVoice(voice.id)}
                 className={`flex-1 flex flex-col items-center gap-1 py-2 px-2 rounded-xl transition-all text-xs ${
                   selectedVoice === voice.id
-                    ? 'bg-pink-400 text-white shadow-sm'
-                    : 'bg-white/70 text-pink-600 hover:bg-white'
+                    ? 'bg-gradient-to-r from-orange-400 to-rose-500 text-white shadow-sm'
+                    : 'bg-white/70 text-rose-600 hover:bg-white'
                 }`}
               >
                 <span className="text-lg">{voice.emoji}</span>
@@ -110,7 +108,7 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
 
         {/* Language Selection */}
         <div>
-          <label className="text-pink-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
+          <label className="text-rose-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
             Idioma
           </label>
           <div className="flex gap-1.5">
@@ -120,8 +118,8 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
                 onClick={() => setSelectedLanguage(lang.id)}
                 className={`flex-1 py-2 px-1 rounded-xl transition-all text-xs font-semibold ${
                   selectedLanguage === lang.id
-                    ? 'bg-pink-400 text-white shadow-sm'
-                    : 'bg-white/70 text-pink-600 hover:bg-white'
+                    ? 'bg-gradient-to-r from-orange-400 to-rose-500 text-white shadow-sm'
+                    : 'bg-white/70 text-rose-600 hover:bg-white'
                 }`}
               >
                 <div className="text-center">
@@ -136,7 +134,7 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
 
       {/* Personality Selection */}
       <div className="mb-4">
-        <label className="text-pink-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
+        <label className="text-rose-500 text-[10px] font-semibold uppercase tracking-wider mb-1.5 block">
           Personalidade
         </label>
         <div className="grid grid-cols-2 gap-2">
@@ -146,8 +144,8 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
               onClick={() => setSelectedPersonality(personality.id)}
               className={`flex items-center gap-2 p-2.5 rounded-xl transition-all ${
                 selectedPersonality === personality.id
-                  ? 'bg-pink-400 text-white shadow-sm'
-                  : 'bg-white/70 text-pink-600 hover:bg-white'
+                  ? 'bg-gradient-to-r from-orange-400 to-rose-500 text-white shadow-sm'
+                  : 'bg-white/70 text-rose-600 hover:bg-white'
               }`}
             >
               <span className="text-xl">{personality.emoji}</span>
@@ -160,7 +158,7 @@ export const ConfigSection: React.FC<ConfigSectionProps> = ({ onStartSession }) 
       {/* Start Button */}
       <button
         onClick={handleStart}
-        className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-400 to-pink-500 text-white font-bold text-sm uppercase tracking-wide shadow-md hover:shadow-lg hover:scale-[1.01] transition-all"
+        className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-400 via-rose-500 to-red-500 text-white font-bold text-sm uppercase tracking-wide shadow-md hover:shadow-lg hover:scale-[1.01] transition-all"
       >
         Entrar no Ringue
       </button>

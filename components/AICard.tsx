@@ -14,6 +14,7 @@ export interface AIModel {
   tone: string;
   gradientFrom: string;
   gradientTo: string;
+  voice?: string; // 'Kore' (feminina) ou 'Puck' (masculina)
 }
 
 interface AICardProps {
@@ -131,7 +132,7 @@ export const AICard: React.FC<AICardProps> = ({ model, onPlay, disabled, userCre
           disabled={disabled || !canAfford}
           className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-black uppercase text-xs sm:text-sm shadow-lg transition-all active:scale-95 ${
             canAfford 
-              ? 'bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:shadow-xl hover:from-pink-400 hover:to-pink-500'
+              ? 'bg-gradient-to-r from-orange-400 to-rose-500 text-white hover:shadow-xl hover:from-orange-300 hover:to-rose-400'
               : 'bg-gray-400 text-gray-200 cursor-not-allowed'
           }`}
         >
@@ -143,7 +144,7 @@ export const AICard: React.FC<AICardProps> = ({ model, onPlay, disabled, userCre
       {!canAfford && (
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="bg-white/90 px-3 sm:px-4 py-2 rounded-full">
-            <p className="text-pink-600 font-black text-[10px] sm:text-xs">Precisa de {model.creditsCost} créditos</p>
+            <p className="text-rose-600 font-black text-[10px] sm:text-xs">Precisa de {model.creditsCost} créditos</p>
           </div>
         </div>
       )}
