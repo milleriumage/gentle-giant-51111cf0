@@ -111,17 +111,17 @@ export const CardsSection: React.FC<CardsSectionProps> = ({
       {/* Header */}
       <div className="text-center mb-6 sm:mb-8">
         <h2 
-          className="text-2xl sm:text-3xl font-black text-pink-500 drop-shadow-md" 
+          className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500 drop-shadow-md" 
           style={{ fontFamily: 'cursive' }}
         >
           Escolha sua Adversária
         </h2>
-        <p className="text-pink-400 text-xs sm:text-sm mt-2">
+        <p className="text-rose-400 text-xs sm:text-sm mt-2">
           Cada modelo tem seu estilo único de discussão
         </p>
         <div className="flex justify-center gap-1 mt-3">
           {[...Array(8)].map((_, i) => (
-            <span key={i} className="text-pink-300 text-xs animate-pulse">♥</span>
+            <span key={i} className="text-rose-300 text-xs animate-pulse">♥</span>
           ))}
         </div>
       </div>
@@ -140,7 +140,7 @@ export const CardsSection: React.FC<CardsSectionProps> = ({
       </div>
 
       {/* Info Footer */}
-      <div className="text-center mt-6 sm:mt-8 text-pink-400 text-[10px] sm:text-xs">
+      <div className="text-center mt-6 sm:mt-8 text-rose-400 text-[10px] sm:text-xs">
         <p>💎 Créditos são consumidos ao iniciar a interação</p>
         <p className="mt-1">⏱️ O tempo varia de acordo com cada modelo</p>
       </div>

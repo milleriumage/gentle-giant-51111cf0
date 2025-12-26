@@ -384,7 +384,7 @@ const App: React.FC = () => {
         },
         config: {
           responseModalities: [Modality.AUDIO],
-          speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } },
+          speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: model.voice || 'Kore' } } },
           systemInstruction: `Você é ${model.name}, uma IA com personalidade ${model.personality}. 
           Seu tema principal é: ${model.theme}. 
           Tom de voz: ${model.tone.toUpperCase()}. 
@@ -781,14 +781,15 @@ const App: React.FC = () => {
                               config.personality === 'engracado' ? 'KKKKKK para tudo!' : 'Você não sabe o que eu passei...',
                   durationSeconds: config.duration * 60,
                   creditsCost: Math.ceil(config.duration * 2),
-                  gradientFrom: '#ec4899',
-                  gradientTo: '#db2777',
+                  gradientFrom: '#FF6B6B',
+                  gradientTo: '#FF4757',
                   personalityEmoji: config.personality === 'sarcastico' ? '🙄' :
                                    config.personality === 'furioso' ? '🤬' :
                                    config.personality === 'engracado' ? '🤣' : '🥺',
                   furyLevel: config.personality === 'furioso' ? 5 :
                             config.personality === 'sarcastico' ? 3 :
-                            config.personality === 'dramatico' ? 4 : 2
+                            config.personality === 'dramatico' ? 4 : 2,
+                  voice: config.voice
                 };
                 handlePlayCard(customModel);
               }}
